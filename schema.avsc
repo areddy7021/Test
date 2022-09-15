@@ -1,0 +1,219 @@
+{
+	"type": "record",
+	"name": "IndividualPreferenceSelection",
+	"namespace": "com.optum.exts.individual.preference.selection.model",
+	"doc": "v2.00 -- Represents a domain model of individualPreferenceSelection",
+	"fields": [
+		{
+			"name": "individualIdentifier",
+			"type": [ "null", "string" ], "default": null,
+			"doc": "The unique identifierto identify an individual person."
+		},
+		{
+			"name": "individualSourceSystemCode",
+			"type": [ "null", "string" ], "default": null,
+			"doc": "Source system identifer."
+		},
+		{
+			"name": "audit",
+			"doc": "Audit metadata objects.",
+			"type": ["null", {
+				"name": "audit",
+				"type": "record",
+				"fields": [
+					{
+						"name": "createUserIdentifier",
+						"type": [ "null", "string" ], "default": null,
+						"doc": "The Id of who or what performed the object creation. This can be a person or process."
+					},
+					{
+						"name": "createDatetime",
+						"type": [ "null", { "type": "long", "logicalType": "timestamp-micros" } ], "default": null,
+						"doc": "Date and time when the object was created."
+					},
+					{
+						"name": "updateUserIdentifier",
+						"type": [ "null", "string" ], "default": null,
+						"doc": "The Id of who or what performed the object update. This can be a person or process."
+					},
+					{
+						"name": "updateDatetime",
+						"type": [ "null", { "type": "long", "logicalType": "timestamp-micros" } ], "default": null,
+						"doc": "Date and time when the object was updated."
+					},
+					{
+						"name": "sourceSystemCreateUserIdentifier",
+						"type": [ "null", "string" ], "default": null,
+						"doc": "The Id of who or what performed the object creation on the source system. This can be a person or process."
+					},
+					{
+						"name": "sourceSystemCreateDatetime",
+						"type": [ "null", { "type": "long", "logicalType": "timestamp-micros" } ], "default": null,
+						"doc": "The date and time the object was created on the source system."
+					},
+					{
+						"name": "sourceSystemUpdateUserIdentifier",
+						"type": [ "null", "string" ], "default": null,
+						"doc": "The Id of who or what performed the object update on the source system. This can be a person or process."
+					},
+					{
+						"name": "sourceSystemUpdateDatetime",
+						"type": [ "null", { "type": "long", "logicalType": "timestamp-micros" } ], "default": null,
+						"doc": "The date and time the object was updated on the source system."
+					},
+					{
+						"name": "recordStatusCode",
+						"type": [ "null", "string" ], "default": null,
+						"doc": "A code indicating the status of the object. Examples: - Active - Inactive - SoftLogical Delete"
+					}
+				]	
+			}  ], "default": null
+		},
+		{
+			"name": "preferenceSelection",
+			"doc": "",
+			"type": ["null", {
+				"type": "array",
+				"items": {
+					"name": "preferenceSelection",
+					"type": "record",
+					"fields": [
+						{
+							"name": "preferenceCategoryCode",
+							"type": [ "null", "string" ], "default": null,
+							"doc": "(REF) The code for the category for the preference. Ex: Paperless, etc."
+						},
+						{
+							"name": "preferenceTopicCode",
+							"type": [ "null", "string" ], "default": null,
+							"doc": "(REF) The code for the topic for the preference. Ex: Do Not Call, Tax Documents, Required Documents, etc."
+						},
+						{
+							"name": "preferencePropertyCode",
+							"type": [ "null", "string" ], "default": null,
+							"doc": "(REF) The code for the property for the preference. Ex: Document Delivery Channel, Opt-In, etc."
+						},
+						{
+							"name": "preferenceSelectionEffectiveDate",
+							"type": [ "null", { "type": "int", "logicalType": "date" } ], "default": null,
+							"doc": "Date preference selection becomes effective."
+						},
+						{
+							"name": "preferencePropertyOptionCode",
+							"type": [ "null", "string" ], "default": null,
+							"doc": "(REF) The code for the property option for the preference. Ex: Email, Yes, etc."
+						},
+						{
+							"name": "preferenceTopicDescription",
+							"type": [ "null", "string" ], "default": null,
+							"doc": "(REFDEF) The description for the preference topic code."
+						},
+						{
+							"name": "preferencePropertyDescription",
+							"type": [ "null", "string" ], "default": null,
+							"doc": "(REFDEF) The description for the preference property code."
+						},
+						{
+							"name": "preferencePropertyOptionDescription",
+							"type": [ "null", "string" ], "default": null,
+							"doc": "(REFDEF) The description for the preference property option code."
+						},
+						{
+							"name": "preferencePropertyOptionValue",
+							"type": [ "null", "string" ], "default": null,
+							"doc": "A value for the property option."
+						},
+						{
+							"name": "lastUpdateDateTime",
+							"type": [ "null", { "type": "long", "logicalType": "timestamp-micros" } ], "default": null,
+							"doc": "Date of last upate."
+						},
+						{
+							"name": "lastUpdateUser",
+							"type": [ "null", "string" ], "default": null,
+							"doc": "User of last upate."
+						},
+						{
+							"name": "preferenceCategoryDescription",
+							"type": [ "null", "string" ], "default": null,
+							"doc": "(REFDEF) The description for the category for the preference."
+						},
+						{
+							"name": "isDefaultSelection",
+							"type": [ "null", "string" ], "default": null,
+							"doc": "Indicates if the selection is a system assigned default selection, as opposed to a user selected preference."
+						},
+						{
+							"name": "preferenceSelectionTerminationDate",
+							"type": [ "null", { "type": "int", "logicalType": "date" } ], "default": null,
+							"doc": "Date preference selection is terminated."
+						}
+					]	
+				}					
+			}  ], "default": null
+		},
+		{
+			"name": "operational",
+			"doc": "Operational metadata objects.",
+			"type": ["null", {
+				"name": "operational",
+				"type": "record",
+				"fields": [
+					{
+						"name": "documentIdentifier",
+						"type": [ "null", "string" ], "default": null,
+						"doc": "Internal system identifier that uniquely identifies the document instance."
+					},
+					{
+						"name": "documentCreateDatetime",
+						"type": [ "null", { "type": "long", "logicalType": "timestamp-micros" } ], "default": null,
+						"doc": "The date and time that the document instance was created."
+					},
+					{
+						"name": "documentUpdateDatetime",
+						"type": [ "null", { "type": "long", "logicalType": "timestamp-micros" } ], "default": null,
+						"doc": "The date and time that the document instance was updated."
+					},
+					{
+						"name": "documentOriginatingSourceSystemCode",
+						"type": [ "null", "string" ], "default": null,
+						"doc": "The abbreviated source system designation that represents the originating system for the data found on the document instance."
+					}
+				]	
+			}  ], "default": null
+		},
+		{
+			"name": "security",
+			"doc": "Security metadata objects.",
+			"type": ["null", {
+				"name": "security",
+				"type": "record",
+				"fields": [
+					{
+						"name": "securitySourceSystemCode",
+						"type": [ "null", "string" ], "default": null,
+						"doc": "A security profile identifier that is assigned to the member level information and all associated data."
+					},
+					{
+						"name": "securityPermission",
+						"doc": "Security metadata objects.",
+						"type": ["null", {
+							"type": "array",
+							"items": {
+								"name": "securityPermission",
+								"type": "record",
+								"fields": [
+									{
+										"name": "securityPermissionValue",
+										"type": [ "null", "string" ], "default": null,
+										"doc": "A security attribute identifying the secure class under which the record instance is administered."
+									}
+								]	
+							}					
+						}  ], "default": null
+					}
+				]	
+			}  ], "default": null
+		}
+	]
+}	

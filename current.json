@@ -1,0 +1,20 @@
+{
+   "id":"1600265106916",
+   "catCd":"PAPERLESS_SETTINGS",
+   "topicCd":"BENEFIT_",
+   "propCd":"DOCUMENT_DELIVERY_CHANNEL",
+   "selectEffDt":"2022-08-10 11:19:35",
+   "prefCd":"PM",
+   "recStatus":"active",
+   "msgStatus":"I",
+   "srcCreatBy":"UNAUTHENTICATED     ",
+   "srcCreatDt":"2022-07-18 12:22:33",
+   "srcLstModBy":"UNAUTHENTICATED     ",
+   "getSrcLstModDt":"2022-07-18 12:22:33",
+   "creatBy":"tburke15",
+   "creatDt":"2022-08-10 11:19:35",
+   "lastModBy":"tburke15",
+   "lastModDt":"2022-08-10 11:19:35",
+   "srcSys":"COMPAS",
+   "permission":null
+}
