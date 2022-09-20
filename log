@@ -1,0 +1,22 @@
+17:14:45.166 [main] ERROR org.springframework.boot.SpringApplication - Application startup failed
+java.lang.NoClassDefFoundError: org/springframework/boot/context/properties/PropertyMapper
+	at org.springframework.cloud.stream.config.PollerConfigEnvironmentPostProcessor.postProcessEnvironment(PollerConfigEnvironmentPostProcessor.java:51)
+	at org.springframework.boot.context.config.ConfigFileApplicationListener.onApplicationEnvironmentPreparedEvent(ConfigFileApplicationListener.java:171)
+	at org.springframework.boot.context.config.ConfigFileApplicationListener.onApplicationEvent(ConfigFileApplicationListener.java:157)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:167)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:122)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:73)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:54)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:336)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1162)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1151)
+	at com.uhc.SpringBootHelloWorldApplication.main(SpringBootHelloWorldApplication.java:11)
+Caused by: java.lang.ClassNotFoundException: org.springframework.boot.context.properties.PropertyMapper
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:387)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:355)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	... 13 common frames omitted
+Disconnected from the target VM, address: '127.0.0.1:53553', transport: 'socket'
