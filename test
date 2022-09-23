@@ -1,0 +1,133 @@
+{"individualIdentifier": "12712660", "individualSourceSystemCode": "COMPAS", "audit": {"createUserIdentifier": "tburke15", "createDatetime": 1658171762000, "updateUserIdentifier": "tburke15", "updateDatetime": 1658171762000, "sourceSystemCreateUserIdentifier": "UNAUTHENTICATED     ", "sourceSystemCreateDatetime": 1626729131000, "sourceSystemUpdateUserIdentifier": "UNAUTHENTICATED     ", "sourceSystemUpdateDatetime": 1626729131000, "recordStatusCode": "ACTIVE"}, "preferenceSelection": [{"preferenceCategoryCode": "PAPERLESS_SETTINGS", "preferenceTopicCode": "BENEFIT_&_PLAN", "preferencePropertyCode": "DOCUMENT_DELIVERY_CHANNEL", "preferenceSelectionEffectiveDate": null, "preferencePropertyOptionCode": "PM", "preferenceTopicDescription": "", "preferencePropertyDescription": "", "preferencePropertyOptionDescription": "", "preferencePropertyOptionValue": "", "lastUpdateDateTime": 1626729131000, "lastUpdateUser": "UNAUTHENTICATED     ", "preferenceCategoryDescription": "", "isDefaultSelection": "", "preferenceSelectionTerminationDate": null}], "operational": {"documentIdentifier": "", "documentCreateDatetime": null, "documentUpdateDatetime": null, "documentOriginatingSourceSystemCode": null}, "security": {"securitySourceSystemCode": "COMPAS", "securityPermission": null}}
+{"individualIdentifier": "12712660", "individualSourceSystemCode": "COMPAS", "audit": {"createUserIdentifier": "tburke15", "createDatetime": 1658171762000, "updateUserIdentifier": "tburke15", "updateDatetime": 1658171762000, "sourceSystemCreateUserIdentifier": "UNAUTHENTICATED     ", "sourceSystemCreateDatetime": 1626729131000, "sourceSystemUpdateUserIdentifier": "UNAUTHENTICATED     ", "sourceSystemUpdateDatetime": 1626729131000, "recordStatusCode": "ACTIVE"}, "preferenceSelection": [{"preferenceCategoryCode": "PAPERLESS_SETTINGS", "preferenceTopicCode": "BENEFIT_&_PLAN", "preferencePropertyCode": "DOCUMENT_DELIVERY_CHANNEL", "preferenceSelectionEffectiveDate": null, "preferencePropertyOptionCode": "PM", "preferenceTopicDescription": "", "preferencePropertyDescription": "", "preferencePropertyOptionDescription": "", "preferencePropertyOptionValue": "", "lastUpdateDateTime": 1626729131000, "lastUpdateUser": "UNAUTHENTICATED     ", "preferenceCategoryDescription": "", "isDefaultSelection": "", "preferenceSelectionTerminationDate": null}], "operational": {"documentIdentifier": "", "documentCreateDatetime": null, "documentUpdateDatetime": null, "documentOriginatingSourceSystemCode": null}, "security": {"securitySourceSystemCode": "COMPAS", "securityPermission": null}}
+2022-09-23 14:08:03 INFO  o.a.k.c.producer.ProducerConfig - ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	bootstrap.servers = [kaas-test-ctc-a.optum.com:443]
+	buffer.memory = 33554432
+	client.dns.lookup = default
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = SSL
+	security.providers = null
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = [hidden]
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = C:\Users\avootuku\Downloads\migration-scheduler\target\classes\preferences\keystore.jks
+	ssl.keystore.password = [hidden]
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = C:\Users\avootuku\Downloads\migration-scheduler\target\classes\preferences\truststore.jks
+	ssl.truststore.password = [hidden]
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+2022-09-23 14:08:03 INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 2.5.0
+2022-09-23 14:08:03 INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: 66563e712b0b9f84
+2022-09-23 14:08:03 INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1663960083600
+2022-09-23 14:08:04 INFO  org.apache.kafka.clients.Metadata - [Producer clientId=producer-1] Cluster ID: 6cbv7QOaSW6j1vXrOCE4jA
+2022-09-23 14:08:04 ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.apache.kafka.common.errors.SerializationException: Can't convert key of class java.lang.String to class org.apache.kafka.common.serialization.ByteArraySerializer specified in key.serializer] with root cause
+java.lang.ClassCastException: java.lang.String cannot be cast to [B
+	at org.apache.kafka.common.serialization.ByteArraySerializer.serialize(ByteArraySerializer.java:19)
+	at org.apache.kafka.common.serialization.Serializer.serialize(Serializer.java:62)
+	at org.apache.kafka.clients.producer.KafkaProducer.doSend(KafkaProducer.java:894)
+	at org.apache.kafka.clients.producer.KafkaProducer.send(KafkaProducer.java:862)
+	at org.springframework.kafka.core.DefaultKafkaProducerFactory$CloseSafeProducer.send(DefaultKafkaProducerFactory.java:1087)
+	at org.springframework.kafka.core.KafkaTemplate.doSend(KafkaTemplate.java:656)
+	at org.springframework.kafka.core.KafkaTemplate.send(KafkaTemplate.java:410)
+	at com.uhc.service.KafkaSender.send(KafkaSender.java:19)
+	at com.uhc.controller.ApacheKafkaWebController.preferencesProducer(ApacheKafkaWebController.java:42)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:879)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:750)
