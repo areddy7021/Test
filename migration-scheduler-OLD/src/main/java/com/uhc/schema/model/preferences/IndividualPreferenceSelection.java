@@ -5,7 +5,6 @@
  */
 package com.uhc.schema.model.preferences;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.BinaryMessageEncoder;
 import org.apache.avro.message.SchemaStore;
@@ -91,7 +90,6 @@ public class IndividualPreferenceSelection extends org.apache.avro.specific.Spec
     this.security = security;
   }
 
-  @JsonIgnore
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
   // Used by DatumWriter.  Applications should not call.
   public Object get(int field$) {

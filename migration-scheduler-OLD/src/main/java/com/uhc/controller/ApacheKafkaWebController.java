@@ -6,11 +6,8 @@ import com.uhc.model.Preferences;
 import com.uhc.model.Security;
 import com.uhc.repo.PreferencesRepository;
 import com.uhc.repo.SecurityRepository;
-import com.uhc.schema.model.preferences.IndividualPreferenceSelection;
-import com.uhc.schema.model.security.ConsumerRolePermission;
-import com.uhc.utils.AvroMapper;
+import com.uhc.utils.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.uhc.service.KafkaSender;
 
-import java.text.ParseException;
 import java.util.List;
 
 @RestController
@@ -26,30 +22,21 @@ import java.util.List;
 public class ApacheKafkaWebController {
 
 	@Autowired
-	private KafkaSender kafkaSender;
+	KafkaSender kafkaSender;
 
 	@Autowired
 	private PreferencesRepository preferencesRepository;
 
 	@Autowired
 	private SecurityRepository securityRepository;
-	
-	@Value("${security.topic.name}")
-	private String securityTopicName;
-	
-	@Value("${preferences.topic.name}")
-	private String preferencesTopicName;
-	
-	
 
 	@GetMapping(value = "/preferences/producer")
-	public String preferencesProducer(@RequestParam("message") String message) throws JsonProcessingException, ParseException {
+	public String preferencesProducer(@RequestParam("message") String message) throws JsonProcessingException {
 		List<Preferences> listPreferences = preferencesRepository.getAllPreferences();
 		for (Preferences preferences : listPreferences){
-
-			IndividualPreferenceSelection individualPreferenceSelection = AvroMapper.getPreferencesMapping(preferences);
-			kafkaSender.sendMessage(preferences.getId(), individualPreferenceSelection.toString(), preferencesTopicName);
-			
+			ObjectMapper mapper = new ObjectMapper();
+			Mapper.getMapping(preferences);
+			kafkaSender.send(preferences.getId(), mapper.writeValueAsString(Mapper.getMapping(preferences)));
 		}
 		return "Message sent to the Kafka Topic NewTopic Successfully";
 	}
@@ -57,11 +44,9 @@ public class ApacheKafkaWebController {
 	@GetMapping(value = "/security/producer")
 	public String securityProducer(@RequestParam("message") String message) throws JsonProcessingException {
 		List<Security> securityList = securityRepository.getAllSecurityList();
-		for (Security security : securityList){ 
-			
-			ConsumerRolePermission rolePermission = AvroMapper.getSecurityMapping(security);
-			kafkaSender.sendMessage(security.getConsumerNm(), rolePermission.toString(), securityTopicName);
-			
+		for (Security security : securityList){
+			ObjectMapper mapper = new ObjectMapper();
+			kafkaSender.send(security.getConsumerNm(), mapper.writeValueAsString(security));
 		}
 		return "Message sent to the Kafka Topic NewTopic Successfully";
 	}

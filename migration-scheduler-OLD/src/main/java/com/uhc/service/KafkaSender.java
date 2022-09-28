@@ -11,8 +11,10 @@ public class KafkaSender {
 	@Autowired
 	private KafkaTemplate<String, String> kafkaTemplate;
 
+	@Value("${topic.name}")
+	private String topicName;
 
-	public void sendMessage(String id , String data, String topicName) {
+	public void send(String id , String data) {
 		kafkaTemplate.send(topicName, id , data);
 	}
 }
