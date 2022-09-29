@@ -34,10 +34,10 @@ public class ApacheKafkaWebController {
 	@Autowired
 	private SecurityRepository securityRepository;
 	
-	@Value("${security.topic.name}")
+	@Value("${topic.name}")
 	private String securityTopicName;
 	
-	@Value("${preferences.topic.name}")
+	@Value("${topic.name}")
 	private String preferencesTopicName;
 	
 	
