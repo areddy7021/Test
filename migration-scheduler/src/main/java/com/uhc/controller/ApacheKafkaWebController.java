@@ -2,8 +2,10 @@ package com.uhc.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.uhc.model.Eligibility;
 import com.uhc.model.Preferences;
 import com.uhc.model.Security;
+import com.uhc.repo.EligibilityRepository;
 import com.uhc.repo.PreferencesRepository;
 import com.uhc.repo.SecurityRepository;
 import com.uhc.schema.model.preferences.IndividualPreferenceSelection;
@@ -34,11 +36,17 @@ public class ApacheKafkaWebController {
 	@Autowired
 	private SecurityRepository securityRepository;
 	
+	@Autowired
+	private EligibilityRepository eligibilityRepository;
+	
 	@Value("${topic.name}")
 	private String securityTopicName;
 	
 	@Value("${topic.name}")
 	private String preferencesTopicName;
+	
+	@Value("${topic.name}")
+	private String eligibilityTopicName;
 	
 	
 
@@ -66,6 +74,18 @@ public class ApacheKafkaWebController {
 		return "Message sent to the Kafka Topic NewTopic Successfully";
 	}
 
+	@GetMapping(value = "/eligibility/producer")
+	public String eligibilityProducer(@RequestParam("message") String message) throws JsonProcessingException {
+		List<Eligibility> eligibilityList = eligibilityRepository.getAllEligibilityList();
+		
+		for (Eligibility eligibility : eligibilityList){
+
+			com.uhc.schema.model.eligibility.Eligibility eligibilityAvro = AvroMapper.getEligibilityMapping(eligibility);
+			kafkaSender.sendMessage(eligibility.getIndividualId(), eligibilityAvro.toString(), eligibilityTopicName);
+
+		}
+		return "Message sent to the Kafka Topic NewTopic Successfully";
+	}
 
 
 }

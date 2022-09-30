@@ -52,10 +52,10 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
     return DECODER.decode(b);
   }
 
-  @Deprecated public java.lang.CharSequence consumer_name;
-  @Deprecated public java.lang.CharSequence role;
-  @Deprecated public java.lang.CharSequence permission;
-  @Deprecated public java.lang.CharSequence source_system;
+  @Deprecated public CharSequence consumer_name;
+  @Deprecated public CharSequence role;
+  @Deprecated public CharSequence permission;
+  @Deprecated public CharSequence source_system;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -71,7 +71,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
    * @param permission The new value for permission
    * @param source_system The new value for source_system
    */
-  public ConsumerRolePermission(java.lang.CharSequence consumer_name, java.lang.CharSequence role, java.lang.CharSequence permission, java.lang.CharSequence source_system) {
+  public ConsumerRolePermission(CharSequence consumer_name, CharSequence role, CharSequence permission, CharSequence source_system) {
     this.consumer_name = consumer_name;
     this.role = role;
     this.permission = permission;
@@ -80,7 +80,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
 
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
   // Used by DatumWriter.  Applications should not call.
-  public java.lang.Object get(int field$) {
+  public Object get(int field$) {
     switch (field$) {
     case 0: return consumer_name;
     case 1: return role;
@@ -92,12 +92,12 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
 
   // Used by DatumReader.  Applications should not call.
   @SuppressWarnings(value="unchecked")
-  public void put(int field$, java.lang.Object value$) {
+  public void put(int field$, Object value$) {
     switch (field$) {
-    case 0: consumer_name = (java.lang.CharSequence)value$; break;
-    case 1: role = (java.lang.CharSequence)value$; break;
-    case 2: permission = (java.lang.CharSequence)value$; break;
-    case 3: source_system = (java.lang.CharSequence)value$; break;
+    case 0: consumer_name = (CharSequence)value$; break;
+    case 1: role = (CharSequence)value$; break;
+    case 2: permission = (CharSequence)value$; break;
+    case 3: source_system = (CharSequence)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -106,7 +106,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
    * Gets the value of the 'consumer_name' field.
    * @return The value of the 'consumer_name' field.
    */
-  public java.lang.CharSequence getConsumerName() {
+  public CharSequence getConsumerName() {
     return consumer_name;
   }
 
@@ -114,7 +114,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
    * Sets the value of the 'consumer_name' field.
    * @param value the value to set.
    */
-  public void setConsumerName(java.lang.CharSequence value) {
+  public void setConsumerName(CharSequence value) {
     this.consumer_name = value;
   }
 
@@ -122,7 +122,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
    * Gets the value of the 'role' field.
    * @return The value of the 'role' field.
    */
-  public java.lang.CharSequence getRole() {
+  public CharSequence getRole() {
     return role;
   }
 
@@ -130,7 +130,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
    * Sets the value of the 'role' field.
    * @param value the value to set.
    */
-  public void setRole(java.lang.CharSequence value) {
+  public void setRole(CharSequence value) {
     this.role = value;
   }
 
@@ -138,7 +138,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
    * Gets the value of the 'permission' field.
    * @return The value of the 'permission' field.
    */
-  public java.lang.CharSequence getPermission() {
+  public CharSequence getPermission() {
     return permission;
   }
 
@@ -146,7 +146,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
    * Sets the value of the 'permission' field.
    * @param value the value to set.
    */
-  public void setPermission(java.lang.CharSequence value) {
+  public void setPermission(CharSequence value) {
     this.permission = value;
   }
 
@@ -154,7 +154,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
    * Gets the value of the 'source_system' field.
    * @return The value of the 'source_system' field.
    */
-  public java.lang.CharSequence getSourceSystem() {
+  public CharSequence getSourceSystem() {
     return source_system;
   }
 
@@ -162,7 +162,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
    * Sets the value of the 'source_system' field.
    * @param value the value to set.
    */
-  public void setSourceSystem(java.lang.CharSequence value) {
+  public void setSourceSystem(CharSequence value) {
     this.source_system = value;
   }
 
@@ -170,8 +170,8 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
    * Creates a new ConsumerRolePermission RecordBuilder.
    * @return A new ConsumerRolePermission RecordBuilder
    */
-  public static ConsumerRolePermission.Builder newBuilder() {
-    return new ConsumerRolePermission.Builder();
+  public static Builder newBuilder() {
+    return new Builder();
   }
 
   /**
@@ -179,8 +179,8 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
    * @param other The existing builder to copy.
    * @return A new ConsumerRolePermission RecordBuilder
    */
-  public static ConsumerRolePermission.Builder newBuilder(ConsumerRolePermission.Builder other) {
-    return new ConsumerRolePermission.Builder(other);
+  public static Builder newBuilder(Builder other) {
+    return new Builder(other);
   }
 
   /**
@@ -188,8 +188,8 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
    * @param other The existing instance to copy.
    * @return A new ConsumerRolePermission RecordBuilder
    */
-  public static ConsumerRolePermission.Builder newBuilder(ConsumerRolePermission other) {
-    return new ConsumerRolePermission.Builder(other);
+  public static Builder newBuilder(ConsumerRolePermission other) {
+    return new Builder(other);
   }
 
   /**
@@ -198,10 +198,10 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<ConsumerRolePermission>
     implements org.apache.avro.data.RecordBuilder<ConsumerRolePermission> {
 
-    private java.lang.CharSequence consumer_name;
-    private java.lang.CharSequence role;
-    private java.lang.CharSequence permission;
-    private java.lang.CharSequence source_system;
+    private CharSequence consumer_name;
+    private CharSequence role;
+    private CharSequence permission;
+    private CharSequence source_system;
 
     /** Creates a new Builder */
     private Builder() {
@@ -212,7 +212,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(ConsumerRolePermission.Builder other) {
+    private Builder(Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.consumer_name)) {
         this.consumer_name = data().deepCopy(fields()[0].schema(), other.consumer_name);
@@ -260,7 +260,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
       * Gets the value of the 'consumer_name' field.
       * @return The value.
       */
-    public java.lang.CharSequence getConsumerName() {
+    public CharSequence getConsumerName() {
       return consumer_name;
     }
 
@@ -269,7 +269,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
       * @param value The value of 'consumer_name'.
       * @return This builder.
       */
-    public ConsumerRolePermission.Builder setConsumerName(java.lang.CharSequence value) {
+    public Builder setConsumerName(CharSequence value) {
       validate(fields()[0], value);
       this.consumer_name = value;
       fieldSetFlags()[0] = true;
@@ -289,7 +289,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
       * Clears the value of the 'consumer_name' field.
       * @return This builder.
       */
-    public ConsumerRolePermission.Builder clearConsumerName() {
+    public Builder clearConsumerName() {
       consumer_name = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -299,7 +299,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
       * Gets the value of the 'role' field.
       * @return The value.
       */
-    public java.lang.CharSequence getRole() {
+    public CharSequence getRole() {
       return role;
     }
 
@@ -308,7 +308,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
       * @param value The value of 'role'.
       * @return This builder.
       */
-    public ConsumerRolePermission.Builder setRole(java.lang.CharSequence value) {
+    public Builder setRole(CharSequence value) {
       validate(fields()[1], value);
       this.role = value;
       fieldSetFlags()[1] = true;
@@ -328,7 +328,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
       * Clears the value of the 'role' field.
       * @return This builder.
       */
-    public ConsumerRolePermission.Builder clearRole() {
+    public Builder clearRole() {
       role = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -338,7 +338,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
       * Gets the value of the 'permission' field.
       * @return The value.
       */
-    public java.lang.CharSequence getPermission() {
+    public CharSequence getPermission() {
       return permission;
     }
 
@@ -347,7 +347,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
       * @param value The value of 'permission'.
       * @return This builder.
       */
-    public ConsumerRolePermission.Builder setPermission(java.lang.CharSequence value) {
+    public Builder setPermission(CharSequence value) {
       validate(fields()[2], value);
       this.permission = value;
       fieldSetFlags()[2] = true;
@@ -367,7 +367,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
       * Clears the value of the 'permission' field.
       * @return This builder.
       */
-    public ConsumerRolePermission.Builder clearPermission() {
+    public Builder clearPermission() {
       permission = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -377,7 +377,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
       * Gets the value of the 'source_system' field.
       * @return The value.
       */
-    public java.lang.CharSequence getSourceSystem() {
+    public CharSequence getSourceSystem() {
       return source_system;
     }
 
@@ -386,7 +386,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
       * @param value The value of 'source_system'.
       * @return This builder.
       */
-    public ConsumerRolePermission.Builder setSourceSystem(java.lang.CharSequence value) {
+    public Builder setSourceSystem(CharSequence value) {
       validate(fields()[3], value);
       this.source_system = value;
       fieldSetFlags()[3] = true;
@@ -406,7 +406,7 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
       * Clears the value of the 'source_system' field.
       * @return This builder.
       */
-    public ConsumerRolePermission.Builder clearSourceSystem() {
+    public Builder clearSourceSystem() {
       source_system = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -417,12 +417,12 @@ public class ConsumerRolePermission extends org.apache.avro.specific.SpecificRec
     public ConsumerRolePermission build() {
       try {
         ConsumerRolePermission record = new ConsumerRolePermission();
-        record.consumer_name = fieldSetFlags()[0] ? this.consumer_name : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.role = fieldSetFlags()[1] ? this.role : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.permission = fieldSetFlags()[2] ? this.permission : (java.lang.CharSequence) defaultValue(fields()[2]);
-        record.source_system = fieldSetFlags()[3] ? this.source_system : (java.lang.CharSequence) defaultValue(fields()[3]);
+        record.consumer_name = fieldSetFlags()[0] ? this.consumer_name : (CharSequence) defaultValue(fields()[0]);
+        record.role = fieldSetFlags()[1] ? this.role : (CharSequence) defaultValue(fields()[1]);
+        record.permission = fieldSetFlags()[2] ? this.permission : (CharSequence) defaultValue(fields()[2]);
+        record.source_system = fieldSetFlags()[3] ? this.source_system : (CharSequence) defaultValue(fields()[3]);
         return record;
-      } catch (java.lang.Exception e) {
+      } catch (Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
       }
     }

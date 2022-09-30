@@ -10,6 +10,21 @@ import org.joda.time.LocalDate;
 
 import com.uhc.model.Preferences;
 import com.uhc.model.Security;
+import com.uhc.schema.model.eligibility.Eligibility;
+import com.uhc.schema.model.eligibility.Membership;
+import com.uhc.schema.model.eligibility.Product;
+import com.uhc.schema.model.eligibility.SourceIndividual;
+import com.uhc.schema.model.eligibility.common.DescriptionType;
+import com.uhc.schema.model.eligibility.common.LastUpdated;
+import com.uhc.schema.model.eligibility.individual.AlternateIdentifierValue;
+import com.uhc.schema.model.eligibility.individual.AlternateIdentifiers;
+import com.uhc.schema.model.eligibility.individual.DemographicInfo;
+import com.uhc.schema.model.eligibility.individual.ElectronicAddress;
+import com.uhc.schema.model.eligibility.individual.IndividualLegacyAttributes;
+import com.uhc.schema.model.eligibility.individual.LabInfo;
+import com.uhc.schema.model.eligibility.individual.PersonName;
+import com.uhc.schema.model.eligibility.individual.PostalAddress;
+import com.uhc.schema.model.eligibility.individual.TelephoneNumber;
 import com.uhc.schema.model.preferences.IndividualPreferenceSelection;
 import com.uhc.schema.model.preferences.audit;
 import com.uhc.schema.model.preferences.operational;
@@ -102,5 +117,142 @@ public class AvroMapper {
 		rolePermission.setRole(security.getSecurityRole());
 		rolePermission.setSourceSystem(security.getSrcSys());
 		return rolePermission;
+	}
+
+	/**
+	 * Eligibility Mapping
+	 * 
+	 * @param eligibility
+	 * @return
+	 */
+	public static Eligibility getEligibilityMapping(com.uhc.model.Eligibility eligibility) {
+		Eligibility eligibilityAvro = new Eligibility();
+		
+		LastUpdated lastUpdated = LastUpdated.newBuilder()
+				.setSourceSystemTimestamp(eligibility.getSrcLastModifiedDate())
+				.setSourceTimestamp(eligibility.getLastModifiedDate())
+				.setUserId(eligibility.getLastModifiedBy())
+				.build();
+		
+		// Get these values from EligibilitySecurity
+		com.uhc.schema.model.eligibility.common.Security membershipSecurity = com.uhc.schema.model.eligibility.common.Security.newBuilder()
+				//.setSecurityPermission(Arrays.asList(eligibility.getP))
+				//.setSecuritySourceSystemCode(eligibility.getsr)
+				.build();
+		
+		Membership membership = Membership.newBuilder()
+				.setActive(true)
+				.setBookOfBusiness(DescriptionType.newBuilder().setDescription(eligibility.getBookOfBusiness()).build())
+				.setBusinessSegment(eligibility.getBusiness() != null ? eligibility.getBusiness() : "M&R")
+				//setCustomerAccountIdentifier -- """36000"" for all plans but PHIP (NONPHIP).  PHIP Plans get ""0704088"""
+				.setCustomerAccountIdentifier(eligibility.getCustAccountId())
+				.setEffectiveDate(eligibility.getInsPlanEffDate())
+				.setEmployerIdentifier(eligibility.getEmpId())
+				.setEnrolleeMemberFacingIdentifier(eligibility.getEnrollMbrFaceId())
+				.setLastUpdated(LastUpdated.newBuilder().setSourceSystemTimestamp(eligibility.getLastModifiedDate()).build())
+				.setProduct(Product.newBuilder().setProductCode(eligibility.getProdCd() != null ? eligibility.getProdCd() : "Medical").build())
+				.setSite(eligibility.getSpbState())
+				.setSitusState(eligibility.getSpbState())
+				.setSubscriberMemberFacingIdentifier(eligibility.getMbrNbr())
+				.setTerminationDate(eligibility.getInsPlanTermDate())
+				.setSecurity(membershipSecurity)
+				
+				.build();
+		
+		AlternateIdentifiers alternativeIdentifiers = AlternateIdentifiers.newBuilder()
+				.setFamilyId(eligibility.getHouseholdId())
+				.setMbiNumbers(Arrays.asList(AlternateIdentifierValue.newBuilder().setIdentifier(eligibility.getMcareClainNbr()).build()))
+				.build();
+		
+		DemographicInfo demographicInfo = DemographicInfo.newBuilder()
+				.setBirthDate(eligibility.getDob())
+				.setGenderType(DescriptionType.newBuilder().setDescription(eligibility.getGenderCd()).build())
+				.setLastUpdated(LastUpdated.newBuilder().setSourceTimestamp(eligibility.getLastModifiedDate()).build())
+				.build();
+		
+		ElectronicAddress electronicAddress = ElectronicAddress.newBuilder()
+				.setActive(true)
+				.setElectronicAddress(eligibility.getEmailAddress())
+				.setLastUpdated(LastUpdated.newBuilder().setSourceTimestamp(eligibility.getLastModifiedDate()).build())
+				.setSourceCode(eligibility.getSrcSysCd() != null ? eligibility.getSrcSysCd() : "COMPAS")
+				.build();
+		
+		LabInfo labInfo = LabInfo.newBuilder()
+				.setActive(true)
+				.build();
+		
+		IndividualLegacyAttributes individualLegacyAttributes = IndividualLegacyAttributes.newBuilder()
+				.setSubscriberId(eligibility.getMbrNbr())
+				.build();
+		
+		PersonName personName = PersonName.newBuilder()
+				.setFirstName(eligibility.getFirstName())
+				.setMiddleName(eligibility.getMidName())
+				.setLastName(eligibility.getLastName())
+				.setLastUpdated(LastUpdated.newBuilder().setSourceTimestamp(eligibility.getLastModifiedDate()).build())
+				.setSourceCode(eligibility.getSrcSysCd() != null ? eligibility.getSrcSysCd() : "COMPAS")
+				.build();
+		
+		// Get from STG_ELIGIBILITY_ADDR
+		PostalAddress postalAddress = PostalAddress.newBuilder()
+				.setActive(true)
+				.setAddressType(DescriptionType.newBuilder().setDescription(null).build())
+				.setBeginDate(null)
+				.setCountrySubCode(null)
+				.setEndDate(null)
+				.setLine1Text(null)
+				.setLine2Text(null)
+				.setLine3Text(null)
+				.setPostalCode(null)
+				.setStateProvinceCode(null)
+				.setTownName(null)
+				.setSourceCode(eligibility.getSrcSysCd() != null ? eligibility.getSrcSysCd() : "COMPAS")
+				.build();
+		
+		// Get these values from EligibilitySecurity
+		com.uhc.schema.model.eligibility.common.Security sourceIndividualSecurity = com.uhc.schema.model.eligibility.common.Security.newBuilder()
+				//.setSecurityPermission(Arrays.asList(eligibility.getP))
+				//.setSecuritySourceSystemCode(eligibility.getsr)
+				.build();
+		
+		TelephoneNumber dayPhone = TelephoneNumber.newBuilder()
+				.setAreaCode(eligibility.getDayPhone().subSequence(0, 2))
+				.setTelephoneNumber(eligibility.getDayPhone().subSequence(2, 9))
+				.build();
+		
+		TelephoneNumber eveningPhone = TelephoneNumber.newBuilder()
+				.setAreaCode(eligibility.getDayPhone().subSequence(0, 2))
+				.setTelephoneNumber(eligibility.getDayPhone().subSequence(2, 9))
+				.build();
+		
+		SourceIndividual sourceIndividual = SourceIndividual.newBuilder()
+				.setAlternateIdentifiers(alternativeIdentifiers)
+				.setDemographicInfo(demographicInfo)
+				.setElectronicAddresses(Arrays.asList(electronicAddress))
+				.setLabInfos(Arrays.asList(labInfo))
+				.setLegacyAttributes(individualLegacyAttributes)
+				.setPersonName(personName)
+				.setPostalAddresses(Arrays.asList(postalAddress))
+				.setSecurity(sourceIndividualSecurity)
+				.setTelephoneNumbers(Arrays.asList(dayPhone, eveningPhone))
+
+				.setLastUpdated(LastUpdated.newBuilder().setSourceTimestamp(eligibility.getLastModifiedDate()).build())
+				.build();
+		
+		// Get these values from EligibilitySecurity
+		com.uhc.schema.model.eligibility.common.Security security = com.uhc.schema.model.eligibility.common.Security.newBuilder()
+				//.setSecurityPermission(Arrays.asList(eligibility.getP))
+				.setSecuritySourceSystemCode(null)
+				.build();
+		
+		eligibilityAvro.setActive(true);
+		eligibilityAvro.setIndividualIdentifier(eligibility.getIndividualId());
+		eligibilityAvro.setLastUpdated(lastUpdated);
+		eligibilityAvro.setMemberships(Arrays.asList(membership));
+		eligibilityAvro.setSecurity(security);
+		eligibilityAvro.setSourceSystemCode(eligibility.getSrcSysCd() != null ? eligibility.getSrcSysCd() : "COMPAS");
+		eligibilityAvro.setSourceIndividual(sourceIndividual);
+		 
+		return eligibilityAvro;
 	}
 }
