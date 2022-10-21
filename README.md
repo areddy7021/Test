@@ -14,5 +14,4 @@ MVN CLEAN INSTALL
 Running App. :
 
 mvn springboot run -Dprofiles.active=preferences ; security ; eligility
-
-https://teams.live.com/l/invite/FBA276_htKlpNgMYAI
+https://teams.live.com/meet/9385812250633
