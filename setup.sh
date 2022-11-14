@@ -91,6 +91,6 @@ sudo xcodebuild -license accept
 #cd Hello
 
 path="$(pwd)"
-echo "path is after ios folder ........  $path"
+echo "SETUP: path is after ios folder ........  $path"
 
 export LANG=en_US.UTF-8
