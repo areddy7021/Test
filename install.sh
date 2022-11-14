@@ -8,6 +8,6 @@ chmod 755 test-and-upload.sh
 echo "Setup Complete and preparing for Build"
 ./build.sh $1 $2 $3 $4
 echo "Build Complete and preparing for Test and Upload results to Sonarqube"
-./test-and-upload.sh $1 $2 $3
+./test-and-upload.sh $1 $2 $3 $4
 echo "Build Complete and preparing for uploading artifact to code artifact"
-./artifact.sh $1 $2 $3
+./artifact.sh $1 $2 $3 $4

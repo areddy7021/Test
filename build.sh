@@ -1,9 +1,8 @@
 
 cd $2/$3
 defaultSimulator='platform=iOS Simulator,name=My-iphone11,OS=14.0'
-path="$(pwd)"
 
-echo "path is after in build folder ........**************  $path"
+echo "build.sh :: Executing xcodebuild in path = $(pwd)"
 
 xcodebuild clean
 
@@ -27,9 +26,7 @@ fi
 newDeviceId=$(xcrun simctl create $deviceName com.apple.CoreSimulator.SimDeviceType.iPhone-11 com.apple.CoreSimulator.SimRuntime.iOS-14-0)
 brew reinstall cocoapods
 brew link --overwrite cocoapods
-echo "path is after ios folder ........**************  $path"
-#cd $2
-echo "path is after ios folder after scripts ........**************  $path"
+echo "build.sh :: Build Succeeded and now installing pods in path = $(pwd)"
 pod init
 pod install
 mkdir builds

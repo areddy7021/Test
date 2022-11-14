@@ -1,6 +1,8 @@
 # Congigure AWS Credentials
 
-cd $2/$3
+#cd $2/$3
+
+echo "artifact.sh :: Executing  aws code artifact export in path = $(pwd)"
 echo "Configuring AWS Code Artifact Credentials"
 
 #aws configure set aws_access_key_id AKIATTVWCAAEIKFFV7NN
